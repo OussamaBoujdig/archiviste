@@ -203,9 +203,10 @@ input, select, textarea {
 .main-content {
   flex: 1;
   margin-left: 280px;
-  padding: 2rem 2.5rem;
+  padding: 2rem 3rem;
   min-height: 100vh;
   background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
+  max-width: calc(100vw - 280px);
 }
 
 .page {
@@ -257,9 +258,9 @@ input, select, textarea {
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.25rem;
-  margin-bottom: 1.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .stat-card {
@@ -353,21 +354,21 @@ input, select, textarea {
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 /* Folders Grid */
 .folders-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  gap: 1.5rem;
 }
 
 /* Document Viewer Grid */
 .viewer-grid {
   display: grid;
-  grid-template-columns: 1fr 350px;
-  gap: 1.5rem;
+  grid-template-columns: 1fr 380px;
+  gap: 2rem;
 }
 
 /* Filters Panel */
@@ -1165,10 +1166,48 @@ tbody tr:hover td {
   cursor: pointer;
 }
 
+/* Large Screens */
+@media (min-width: 1600px) {
+  .main-content {
+    padding: 2.5rem 4rem;
+  }
+
+  .stats-grid {
+    gap: 2rem;
+  }
+
+  .dashboard-grid {
+    gap: 2.5rem;
+  }
+
+  .stat-card {
+    padding: 2rem;
+  }
+
+  .card {
+    padding: 2rem;
+  }
+
+  .page-title {
+    font-size: 2.25rem;
+  }
+}
+
+/* Medium-Large Screens */
+@media (max-width: 1440px) {
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 1280px) {
   .main-content {
     padding: 1.5rem 2rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -1176,6 +1215,18 @@ tbody tr:hover td {
   .sidebar {
     width: 80px;
     padding: 1rem 0;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .viewer-grid {
+    grid-template-columns: 1fr;
   }
 
   .sidebar-logo h1 span {
