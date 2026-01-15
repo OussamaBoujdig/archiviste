@@ -74,7 +74,7 @@ function DocumentViewer({ user }) {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 350px', gap: '1.5rem' }}>
+      <div className="viewer-grid">
         {/* PDF Viewer */}
         <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
           <div style={{

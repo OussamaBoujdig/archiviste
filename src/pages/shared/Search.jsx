@@ -145,14 +145,7 @@ function SearchPage({ user }) {
 
         {/* Filters Panel */}
         {showFilters && (
-          <div style={{ 
-            marginTop: '1rem', 
-            paddingTop: '1rem', 
-            borderTop: '1px solid var(--gray-200)',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: '1rem'
-          }}>
+          <div className="filters-panel">
             <div className="form-group" style={{ marginBottom: 0 }}>
               <label style={{ fontSize: '0.75rem', color: 'var(--gray-500)' }}>Type de document</label>
               <select 

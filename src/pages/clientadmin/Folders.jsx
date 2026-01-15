@@ -147,7 +147,7 @@ function FoldersPage({ user }) {
       </div>
 
       {/* Folders Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(400px, 1fr))', gap: '1rem' }}>
+      <div className="folders-grid">
         {rootFolders.map(folder => (
           <FolderCard key={folder.id} folder={folder} />
         ))}
