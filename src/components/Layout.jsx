@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { 
   Archive, 
@@ -11,11 +12,14 @@ import {
   Search,
   Activity,
   Shield,
-  AlertTriangle
+  AlertTriangle,
+  Menu,
+  X
 } from 'lucide-react'
 import { USER_ROLES } from '../data/mockData'
 
 function Layout({ children, user, onLogout, isDemo }) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   // Navigation items based on user role
   const getNavItems = () => {
     const role = user?.role
@@ -87,6 +91,8 @@ function Layout({ children, user, onLogout, isDemo }) {
     return colors[role] || '#64748b'
   }
 
+  const closeMobileMenu = () => setMobileMenuOpen(false)
+
   return (
     <div className="app-layout">
       {/* Demo Watermark */}
@@ -106,6 +112,71 @@ function Layout({ children, user, onLogout, isDemo }) {
           DEMO
         </div>
       )}
+
+      {/* Mobile Header */}
+      <header className="mobile-header">
+        <div className="mobile-header-logo">
+          <Archive size={24} />
+          <span>AmanDocs</span>
+        </div>
+        <button className="mobile-menu-btn" onClick={() => setMobileMenuOpen(true)}>
+          <Menu size={24} />
+        </button>
+      </header>
+
+      {/* Mobile Navigation Overlay */}
+      <div 
+        className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`}
+        onClick={closeMobileMenu}
+      />
+
+      {/* Mobile Navigation */}
+      <nav className={`mobile-nav ${mobileMenuOpen ? 'active' : ''}`}>
+        <div className="mobile-nav-header">
+          <div className="mobile-header-logo">
+            <Archive size={24} />
+            <span>AmanDocs</span>
+          </div>
+          <button className="mobile-nav-close" onClick={closeMobileMenu}>
+            <X size={20} />
+          </button>
+        </div>
+        
+        <div className="sidebar-nav" style={{ padding: '1rem' }}>
+          {navItems.map((item) => (
+            <NavLink 
+              key={item.to} 
+              to={item.to}
+              className={({ isActive }) => isActive ? 'active' : ''}
+              end={item.to === '/'}
+              onClick={closeMobileMenu}
+            >
+              <item.icon size={20} />
+              <span>{item.label}</span>
+            </NavLink>
+          ))}
+        </div>
+
+        <div className="sidebar-user" style={{ marginTop: 'auto' }}>
+          <div className="sidebar-user-avatar" style={{ backgroundColor: getRoleBadgeColor(user?.role) }}>
+            {user?.avatar || user?.name?.charAt(0) || 'U'}
+          </div>
+          <div className="sidebar-user-info">
+            <div className="sidebar-user-name">{user?.name}</div>
+            <div className="sidebar-user-role" style={{ color: getRoleBadgeColor(user?.role), fontWeight: '500' }}>
+              {getRoleLabel(user?.role)}
+            </div>
+          </div>
+          <button 
+            className="btn-icon" 
+            onClick={() => { closeMobileMenu(); onLogout(); }}
+            title="Se déconnecter"
+            style={{ color: 'var(--gray-400)' }}
+          >
+            <LogOut size={18} />
+          </button>
+        </div>
+      </nav>
 
       <aside className="sidebar">
         <div className="sidebar-logo">
