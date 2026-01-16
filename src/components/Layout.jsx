@@ -178,23 +178,46 @@ function Layout({ children, user, onLogout, isDemo }) {
         </div>
       </nav>
 
-      <aside className="sidebar">
+      <aside className={`sidebar ${user?.role === USER_ROLES.SUPER_ADMIN ? 'sidebar-super-admin' : ''}`}>
         <div className="sidebar-logo">
           <h1>
-            <Archive size={28} />
-            <span>AmanDocs</span>
+            <div style={{
+              width: '48px',
+              height: '48px',
+              background: user?.role === USER_ROLES.SUPER_ADMIN 
+                ? 'linear-gradient(135deg, #dc2626 0%, #991b1b 100%)'
+                : 'linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%)',
+              borderRadius: 'var(--radius-xl)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: user?.role === USER_ROLES.SUPER_ADMIN
+                ? '0 8px 24px rgba(220, 38, 38, 0.4)'
+                : '0 8px 24px rgba(37, 99, 235, 0.4)',
+              marginBottom: '0.75rem'
+            }}>
+              {user?.role === USER_ROLES.SUPER_ADMIN ? <Shield size={28} /> : <Archive size={28} />}
+            </div>
+            <span style={{ fontSize: '1.5rem', fontWeight: '800' }}>AmanDocs</span>
           </h1>
           {user?.role === USER_ROLES.SUPER_ADMIN && (
             <div style={{
-              marginTop: '0.5rem',
-              padding: '0.25rem 0.75rem',
-              backgroundColor: '#dc2626',
-              color: 'white',
-              borderRadius: '0.375rem',
-              fontSize: '0.6875rem',
-              fontWeight: '600',
-              textAlign: 'center'
+              marginTop: '0.75rem',
+              padding: '0.5rem 1rem',
+              background: 'linear-gradient(135deg, rgba(220, 38, 38, 0.15) 0%, rgba(153, 27, 27, 0.1) 100%)',
+              border: '1.5px solid rgba(220, 38, 38, 0.3)',
+              color: '#dc2626',
+              borderRadius: 'var(--radius-lg)',
+              fontSize: '0.75rem',
+              fontWeight: '700',
+              textAlign: 'center',
+              letterSpacing: '0.05em',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '0.5rem'
             }}>
+              <Shield size={14} />
               SUPER ADMIN
             </div>
           )}

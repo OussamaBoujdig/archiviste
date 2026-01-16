@@ -22,7 +22,7 @@ function Login({ onLogin }) {
 
   return (
     <div className="login-page">
-      <div className="login-container" style={{ maxWidth: '520px' }}>
+      <div className="login-container" style={{ maxWidth: '580px', padding: '3rem' }}>
         <div className="login-header">
           <div className="login-logo">
             <Archive size={48} strokeWidth={2.5} />
@@ -37,18 +37,18 @@ function Login({ onLogin }) {
 
         <form className="login-form" onSubmit={handleSubmit}>
           {/* Role Selection for Demo */}
-          <div style={{ marginBottom: '1.5rem' }}>
+          <div style={{ marginBottom: '2rem' }}>
             <label style={{ 
               display: 'block', 
-              marginBottom: '1rem', 
+              marginBottom: '1.25rem', 
               fontWeight: '600', 
               color: 'var(--gray-800)',
-              fontSize: '0.9375rem',
+              fontSize: '1rem',
               textAlign: 'center'
             }}>
               🎭 Mode Démo - Sélectionnez votre rôle
             </label>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.875rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
               {roles.map((role) => (
                 <button
                   key={role.id}
@@ -56,7 +56,7 @@ function Login({ onLogin }) {
                   onClick={() => setSelectedRole(role.id)}
                   className="role-card"
                   style={{
-                    padding: '1.125rem',
+                    padding: '1.25rem',
                     borderRadius: 'var(--radius-xl)',
                     border: selectedRole === role.id ? `2px solid ${role.color}` : '2px solid var(--gray-200)',
                     backgroundColor: selectedRole === role.id ? `${role.color}15` : 'white',
@@ -65,7 +65,8 @@ function Login({ onLogin }) {
                     transition: 'var(--transition)',
                     position: 'relative',
                     overflow: 'hidden',
-                    boxShadow: selectedRole === role.id ? `0 4px 12px ${role.color}30` : 'var(--shadow-sm)'
+                    boxShadow: selectedRole === role.id ? `0 4px 12px ${role.color}30` : 'var(--shadow-sm)',
+                    minHeight: '90px'
                   }}
                 >
                   {selectedRole === role.id && (
@@ -99,8 +100,8 @@ function Login({ onLogin }) {
             </div>
           </div>
 
-          <div className="form-group" style={{ marginBottom: '1.25rem' }}>
-            <label htmlFor="email" style={{ fontWeight: '600', color: 'var(--gray-800)' }}>Adresse email</label>
+          <div className="form-group" style={{ marginBottom: '1.5rem' }}>
+            <label htmlFor="email" style={{ fontWeight: '600', color: 'var(--gray-800)', fontSize: '0.9375rem' }}>Adresse email</label>
             <div className="input-with-icon">
               <Mail size={20} />
               <input
@@ -109,13 +110,13 @@ function Login({ onLogin }) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="votre@email.com"
-                style={{ fontSize: '0.9375rem' }}
+                style={{ fontSize: '1rem', padding: '0.875rem 1rem 0.875rem 2.75rem' }}
               />
             </div>
           </div>
 
-          <div className="form-group" style={{ marginBottom: '1.5rem' }}>
-            <label htmlFor="password" style={{ fontWeight: '600', color: 'var(--gray-800)' }}>Mot de passe</label>
+          <div className="form-group" style={{ marginBottom: '2rem' }}>
+            <label htmlFor="password" style={{ fontWeight: '600', color: 'var(--gray-800)', fontSize: '0.9375rem' }}>Mot de passe</label>
             <div className="input-with-icon">
               <Lock size={20} />
               <input
@@ -125,7 +126,7 @@ function Login({ onLogin }) {
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                style={{ paddingLeft: '40px', fontSize: '0.9375rem' }}
+                style={{ paddingLeft: '2.75rem', fontSize: '1rem', padding: '0.875rem 1rem 0.875rem 2.75rem' }}
                 required
               />
             </div>
