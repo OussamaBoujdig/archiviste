@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { 
   Activity, Search, Filter, Download, Eye, Upload, Edit, Trash2,
-  LogIn, LogOut, AlertTriangle, CheckCircle, Clock
+  LogIn, LogOut, AlertTriangle, CheckCircle, Clock, Sparkles, Shield
 } from 'lucide-react'
 import { mockActivityLogs, mockUsers, mockCompanies } from '../../data/mockData'
 
@@ -69,8 +69,14 @@ function SystemLogs() {
     <div className="page">
       <div className="page-header">
         <div>
-          <h1 className="page-title">Journaux système</h1>
-          <p className="page-subtitle">Historique des activités sur la plateforme (métadonnées uniquement)</p>
+          <h1 className="page-title" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <Activity size={32} style={{ color: 'var(--primary)' }} />
+            Journaux système
+          </h1>
+          <p className="page-subtitle" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Shield size={16} style={{ color: 'var(--accent)' }} />
+            Historique des activités sur la plateforme (métadonnées uniquement)
+          </p>
         </div>
         <button className="btn btn-secondary">
           <Download size={18} />
@@ -80,18 +86,31 @@ function SystemLogs() {
 
       {/* Info Banner */}
       <div style={{
-        padding: '1rem 1.5rem',
-        backgroundColor: '#eff6ff',
-        border: '1px solid #bfdbfe',
-        borderRadius: '0.75rem',
-        marginBottom: '1.5rem',
+        padding: '1.25rem 1.5rem',
+        background: 'linear-gradient(135deg, #eff6ff 0%, #e0f2fe 100%)',
+        border: '1.5px solid #bfdbfe',
+        borderRadius: 'var(--radius-xl)',
+        marginBottom: '2rem',
         display: 'flex',
         alignItems: 'center',
-        gap: '0.75rem'
+        gap: '1rem',
+        boxShadow: '0 4px 12px rgba(37, 99, 235, 0.1)'
       }}>
-        <AlertTriangle size={20} color="#2563eb" />
-        <div style={{ fontSize: '0.875rem', color: '#1e40af' }}>
-          <strong>Note de sécurité:</strong> En tant que Super Admin, vous n'avez accès qu'aux métadonnées. 
+        <div style={{
+          width: '48px',
+          height: '48px',
+          borderRadius: 'var(--radius-lg)',
+          background: 'rgba(37, 99, 235, 0.15)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexShrink: 0
+        }}>
+          <Shield size={24} color="#2563eb" strokeWidth={2.5} />
+        </div>
+        <div style={{ fontSize: '0.875rem', color: '#1e40af', lineHeight: '1.6' }}>
+          <strong style={{ fontWeight: '700', display: 'block', marginBottom: '0.25rem' }}>Note de sécurité</strong>
+          En tant que Super Admin, vous n'avez accès qu'aux métadonnées. 
           Le contenu des documents reste confidentiel et accessible uniquement aux utilisateurs autorisés de chaque entreprise.
         </div>
       </div>

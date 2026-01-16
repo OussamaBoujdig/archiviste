@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { 
   Building2, Search, Plus, Edit, Trash2, MoreVertical,
-  CheckCircle, XCircle, HardDrive, Users, FileText, X
+  CheckCircle, XCircle, HardDrive, Users, FileText, X, Sparkles, Crown
 } from 'lucide-react'
 import { mockCompanies, PLANS } from '../../data/mockData'
 
@@ -40,8 +40,14 @@ function CompaniesManagement() {
     <div className="page">
       <div className="page-header">
         <div>
-          <h1 className="page-title">Gestion des entreprises</h1>
-          <p className="page-subtitle">Gérez les entreprises clientes de la plateforme</p>
+          <h1 className="page-title" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <Building2 size={32} style={{ color: 'var(--primary)' }} />
+            Gestion des entreprises
+          </h1>
+          <p className="page-subtitle" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Sparkles size={16} style={{ color: 'var(--accent)' }} />
+            Gérez les entreprises clientes de la plateforme
+          </p>
         </div>
         <button className="btn btn-primary" onClick={() => { setEditingCompany(null); setShowModal(true); }}>
           <Plus size={18} />
@@ -114,10 +120,11 @@ function CompaniesManagement() {
                 <td>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                     <div style={{
-                      width: '40px',
-                      height: '40px',
-                      borderRadius: '0.5rem',
-                      backgroundColor: '#dbeafe',
+                      width: '44px',
+                      height: '44px',
+                      borderRadius: 'var(--radius-lg)',
+                      background: 'linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)',
+                      boxShadow: '0 2px 8px rgba(37, 99, 235, 0.2)',
                       color: '#2563eb',
                       display: 'flex',
                       alignItems: 'center',
