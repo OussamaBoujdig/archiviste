@@ -21,11 +21,24 @@ Thumbs.db
 *.log
 npm-debug.log*
 
-# Backend
+# Backend (Node.js - deprecated)
 backend/node_modules/
 backend/.env
 backend/uploads/*
 !backend/uploads/.gitkeep
+
+# Laravel Backend
+laravel-backend/vendor/
+laravel-backend/.env
+laravel-backend/storage/*.key
+laravel-backend/storage/app/documents/*
+!laravel-backend/storage/app/documents/.gitkeep
+laravel-backend/storage/framework/cache/data/*
+laravel-backend/storage/framework/sessions/*
+laravel-backend/storage/framework/views/*
+laravel-backend/storage/logs/*
+laravel-backend/bootstrap/cache/*
+laravel-backend/.phpunit.result.cache
 
 # Docker
 postgres_data/
